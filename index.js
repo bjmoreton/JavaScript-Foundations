@@ -43,7 +43,7 @@ let numerator = principal * n2;
 let denominator = (n1 - 1);
 
 let monthlyRate = (numerator / denominator).toFixed(2);
-alert(monthlyRate);
+console.log("$" + monthlyRate);
 
 // 🏡 Task 3: Function
 /* Create a function called `mortgageCalculator` that combines all of the steps from task 1 and 2 and returns a sentence "{Name}, your monthly rate is ${monthlyRate}"
@@ -51,7 +51,7 @@ alert(monthlyRate);
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
 function mortgageCalculator1() {
-    return `${name}, your month rate is ${monthlyRate}`;
+    return `${name}, your month rate is $${monthlyRate}`;
 }
 console.log(mortgageCalculator1());
 
@@ -61,7 +61,7 @@ console.log(mortgageCalculator1());
 For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
-function mortgageCalculator2(P, I, N){
+function mortgageCalculator2(P, I, N) {
     return (P * ((I / 12) * Math.pow(1 + (I / 12), (N * 12))) / (Math.pow(1 + (I / 12), (N * 12)) - 1)).toFixed(2);
 }
 console.log(mortgageCalculator2(principal, interest, years));
@@ -73,11 +73,11 @@ Then, add control flow within your function such that IF creditScore is above 74
 
 Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by 0.95. Similarly, to increase an interest rate by 5% you'd do monthlyRate * 1.05. 
 */
-function mortgageCalculator3(P, I, N, CS){
+function mortgageCalculator3(P, I, N, CS) {
     rate = (P * ((I / 12) * Math.pow(1 + (I / 12), (N * 12))) / (Math.pow(1 + (I / 12), (N * 12)) - 1));
-    
-    if(CS > 740) rate = (rate * 0.95);
-    else if(CS < 660) rate = (rate * 1.05);
+
+    if (CS > 740) rate = (rate * 0.95);
+    else if (CS < 660) rate = (rate * 1.05);
 
     return rate.toFixed(2);
 }
@@ -104,7 +104,7 @@ function variableInterestRate1(name, P, I, N) {
     for (i = 0; i < 9; i++) {
         let interestRate = ((I - 0.02) + (i * 0.005));
         rate = (P * ((interestRate / 12) * Math.pow(1 + (interestRate / 12), (N * 12))) / (Math.pow(1 + (interestRate / 12), (N * 12)) - 1)).toFixed(0);
-        console.log(`${name}, with an interest rate of ${interestRate} your monthly rate is ${rate}`);
+        console.log(`${name}, with an interest rate of ${interestRate.toFixed(3)} your monthly rate is $${rate}`);
     }
 }
 variableInterestRate1(name, 200000, 0.04, 30);
@@ -128,12 +128,13 @@ years = window.prompt("Please enter loan length:");
 name = window.prompt("Please enter your name:");
 console.log(variableInterestRate1(name, principal, interest, years));
 
+
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
 function variableInterestRate2(name, P, I, N) {
     for (i = 0; i < I.length; i++) {
         let interestRate = I[i];
         rate = (P * ((interestRate / 12) * Math.pow(1 + (interestRate / 12), (N * 12))) / (Math.pow(1 + (interestRate / 12), (N * 12)) - 1)).toFixed(0);
-        console.log(`${name}, with an interest rate of ${interestRate} your monthly rate is ${rate}`);
+        console.log(`${name}, with an interest rate of ${interestRate} your monthly rate is $${rate}`);
     }
 }
 variableInterestRate2('name', 200000, [0.04, 0.05, 0.08], 30);
