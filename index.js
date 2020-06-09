@@ -3,10 +3,10 @@
 // 🏡 Task 1: Variables
 /* Create variables for principal, interest rate, and years. Assign them the values 200000, 0.05, and 30 respectively. Create another value called name and give it the value of your own name.
 */
-let principal = window.prompt("Please enter a Principal amount:");
-let interest = window.prompt("Please enter a Interest Rate:");
-let years = window.prompt("Please enter loan length:");
-let name = window.prompt("Please enter your name:");
+let principal = 200000;
+let interest = 0.05;
+let years = 30;
+let name = "Richard";
 
 
 // 🏡 Task 1.5: Simple Math
@@ -96,7 +96,7 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 */
 function variableInterestRate(name, P, I, N) {
     for (i = 0; i < 9; i++) {
-        let interestRate = (I - 0.02 + i * 0.005);
+        let interestRate = ((I - 0.02) + (i * 0.005));
         rate = (P * ((interestRate / 12) * Math.pow(1 + (interestRate / 12), (N * 12))) / (Math.pow(1 + (interestRate / 12), (N * 12)) - 1)).toFixed(0);
         console.log(`${name}, with an interest rate of ${interestRate} your monthly rate is ${rate}`);
     }
@@ -116,7 +116,11 @@ variableInterestRate(name, 200000, 0.04, 30);
 
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
-
+principal = window.prompt("Please enter a Principal amount:");
+interest = window.prompt("Please enter a Interest Rate:");
+years = window.prompt("Please enter loan length:");
+name = window.prompt("Please enter your name:");
+console.log(variableInterestRate(principal, interest, years, name));
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
 function variableInterestRate(name, P, I, N) {
